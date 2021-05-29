@@ -1,6 +1,6 @@
 import React from "react";
 import Counter from "../Counter";
-import { fireEvent, render } from "@testing-library/react";
+import { cleanup, fireEvent, render } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 
 let getByTestId;
@@ -8,6 +8,10 @@ let getByTestId;
 beforeEach(() => {
     const component = render(<Counter />);
     getByTestId = component.getByTestId;
+})
+
+afterEach(() => {
+    cleanup()
 })
 
 test("header renders with correct text", () => {
